@@ -31,15 +31,26 @@ if __name__ == "__main__":
     swarm = Crazyswarm()
     timeHelper = swarm.timeHelper
     cf = swarm.allcfs.crazyflies[0]
-
+    cf.initialPosition = cf.position()
     rate = 30.0
     Z = 0.5
+
+    print("Switching controller")
+    cf.setParam("stabilizer/controller", 5) 
+    timeHelper.sleep(0.5)
 
     cf.takeoff(targetHeight=Z, duration=Z+1.0)
     timeHelper.sleep(Z+2.0)
 
-    executeTrajectory(timeHelper, cf, "figure8.csv", rate, offset=np.array([-2.0, 0, 0.5]))
+    # print("Switching controller")
+    # cf.setParam("stabilizer/controller", 5) 
+    # timeHelper.sleep(0.5)
+
+    executeTrajectory(timeHelper, cf, "figure8.csv", rate, offset=np.array([0, 0, 0.5]))
 
     cf.notifySetpointsStop()
+
+    # cf.setParam("stabilizer/controller", 1) 
+
     cf.land(targetHeight=0.03, duration=Z+1.0)
     timeHelper.sleep(Z+2.0)
