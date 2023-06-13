@@ -5,6 +5,11 @@ swarm = Crazyswarm()
 timeHelper = swarm.timeHelper
 allcfs = swarm.allcfs
 
+
+print("Switching controller")
+allcfs.setParam("stabilizer/controller", 1)  # MPC
+timeHelper.sleep(0.01)
+
 Z = 0
 # takeoff
 while Z < 1.0:

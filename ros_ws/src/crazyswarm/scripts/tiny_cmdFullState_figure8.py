@@ -36,15 +36,15 @@ if __name__ == "__main__":
     Z = 0.5
 
     print("Switching controller")
-    cf.setParam("stabilizer/controller", 5) 
+    cf.setParam("stabilizer/controller", 1) 
     timeHelper.sleep(0.5)
 
     cf.takeoff(targetHeight=Z, duration=Z+1.0)
     timeHelper.sleep(Z+2.0)
 
-    # print("Switching controller")
-    # cf.setParam("stabilizer/controller", 5) 
-    # timeHelper.sleep(0.5)
+    print("Switching controller")
+    cf.setParam("stabilizer/controller", 5) 
+    timeHelper.sleep(0.5)
 
     executeTrajectory(timeHelper, cf, "figure8.csv", rate, offset=np.array([0, 0, 0.5]))
 

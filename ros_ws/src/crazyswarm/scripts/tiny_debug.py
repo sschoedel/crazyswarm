@@ -9,15 +9,15 @@ cf.initialPosition = cf.position()
 Z = 0.5
 
 print("Switching controller")
-cf.setParam("stabilizer/controller", 5)  # MPC
+cf.setParam("stabilizer/controller", 1)  # MPC
 timeHelper.sleep(0.1)
 
-for k in range(3):
-    pos = np.array(cf.initialPosition) + np.array([0, 0.5, Z])
+for k in range(20):
+    pos = np.array(cf.initialPosition) + np.array([0, 0, Z])
     cf.cmdPosition(pos)
     timeHelper.sleep(0.1)
 
-for k in range(7):
+for k in range(70):
     pos = np.array(cf.initialPosition) + np.array([0, 0, Z])
     cf.cmdPosition(pos)
     timeHelper.sleep(0.1)
