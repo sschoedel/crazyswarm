@@ -19,14 +19,14 @@ def main():
     print("press button to continue")
     swarm.input.waitUntilButtonPressed()
     
-    print("Switching to controller 5")
-    cf.setParam("stabilizer/controller", CONTROLLER_NUM) # 1: PID, 2: mellinger, 5: MPC
+    # print("Switching to controller 5")
+    # cf.setParam("stabilizer/controller", CONTROLLER_NUM) # 1: PID, 2: mellinger, 5: MPC
 
-    print("press button to continue")
-    swarm.input.waitUntilButtonPressed()
+    # print("press button to continue")
+    # swarm.input.waitUntilButtonPressed()
 
-    print("Switching to controller 1")
-    cf.setParam("stabilizer/controller", 1) # 1: PID, 2: mellinger, 5: MPC
+    # print("Switching to controller 1")
+    # cf.setParam("stabilizer/controller", 1) # 1: PID, 2: mellinger, 5: MPC
     # timeHelper.sleep(0.5)
     # cf.setParam("stabilizer/controller", CONTROLLER_NUM) # 1: PID, 2: mellinger, 5: MPC
     cf.land(0.05, 2.5)
