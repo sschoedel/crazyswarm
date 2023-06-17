@@ -4,7 +4,7 @@ crazyflies:
     initialPosition: [0.0, 0.0, 0.0]
     type: default
   # - id: 2
-  #   channel: 20 # small mocap markers, 32 grams
+  #   channel: 80 # small mocap markers, 32 grams
   #   initialPosition: [0.0, 0.0, 0.0]
   #   type: default
     
