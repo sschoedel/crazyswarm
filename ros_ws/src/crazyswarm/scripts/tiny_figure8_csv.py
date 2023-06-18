@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+"""
+Figure-8 trajectory (x, y, z, yaw in 7th-order polynomial parameters) is uploaded
+and executed internally. Works with TinyMPC.
+"""
+
 import numpy as np
 
 from pycrazyswarm import *
@@ -17,7 +22,7 @@ if __name__ == "__main__":
 
     Z = 0.5
     TRIALS = 1
-    TIMESCALE = 0.6
+    TIMESCALE = 1.0
     for i in range(TRIALS):
         for cf in allcfs.crazyflies:
             cf.uploadTrajectory(0, 0, traj1)

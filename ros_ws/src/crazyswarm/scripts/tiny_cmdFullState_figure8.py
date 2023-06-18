@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+"""
+Figure-8 trajectory (x, y, z, yaw in 7th-order polynomial parameters) is computed and
+sent to the drone. Works with TinyMPC.
+"""
+
 import numpy as np
 
 from pycrazyswarm import *
@@ -37,6 +42,7 @@ if __name__ == "__main__":
 
     print("Switching controller")
     cf.setParam("stabilizer/controller", 1) 
+    # cf.setParam("stabilizer/controller", 5) 
     timeHelper.sleep(1.0)
 
     cf.takeoff(targetHeight=Z, duration=Z+1.0)
@@ -46,7 +52,7 @@ if __name__ == "__main__":
     cf.setParam("stabilizer/controller", 5) 
     timeHelper.sleep(1.5)
 
-    executeTrajectory(timeHelper, cf, "figure8.csv", rate, offset=np.array([0, 0, 0.5]))
+    executeTrajectory(timeHelper, cf, "figure8.csv", rate, offset=np.array([0, 0, Z]))
 
     cf.notifySetpointsStop()
 
@@ -54,3 +60,4 @@ if __name__ == "__main__":
 
     cf.land(targetHeight=0.03, duration=Z+1.0)
     timeHelper.sleep(Z+2.0)
+    # cf.setParam("stabilizer/controller", 1) 
