@@ -29,7 +29,7 @@ def main():
     print("Switching controller")  # Controller 5 doesn't care about cmd
     cf.setParam("stabilizer/controller", 2) # 1: PID, 4: Brescianini, 5: TinyMPC
     cf.setParam("ctrlMPC/uHover", uHover)
-    timeHelper.sleep(5)
+    timeHelper.sleep(8)
 
     # print("press any button to land")
     # swarm.input.waitUntilButtonPressed()
