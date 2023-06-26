@@ -6,7 +6,7 @@ from pycrazyswarm import *
 
 frequency = 500     # control frequency
 uHover = 0.67       # hovering offset
-trajLength = 2093    # for delay time 
+trajLength = 315 #780    # for delay time 
 trajIter = 2        # number of laps
 trajHold = 1        # 1 is most agressive
 

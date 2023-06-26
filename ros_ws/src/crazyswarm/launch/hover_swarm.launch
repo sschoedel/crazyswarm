@@ -42,9 +42,16 @@
       write_csvs: False
       force_no_cache: False
       enable_parameters: True
-      enable_logging: True
+      enable_logging: False
       enable_logging_pose: True
     </rosparam>
+  </node>
+
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
+      <param name="target_frame_name" type="string" value="world" />
+      <param name="source_frame_name" type="string" value="cf1" />   # change to cf2 if needed
+      <param name="trajectory_update_rate" type="double" value="100" />
+      <param name="trajectory_publish_rate" type="double" value="100" />
   </node>
 
   <!-- <node name="joy" pkg="joy" type="joy_node" output="screen">
