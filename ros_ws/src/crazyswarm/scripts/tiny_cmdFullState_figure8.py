@@ -38,7 +38,7 @@ if __name__ == "__main__":
     cf = swarm.allcfs.crazyflies[0]
     cf.initialPosition = cf.position()
     rate = 30.0
-    Z = 0.5
+    Z = 1.0
 
     print("Switching controller")
     cf.setParam("stabilizer/controller", 1) 
@@ -48,6 +48,7 @@ if __name__ == "__main__":
     cf.takeoff(targetHeight=Z, duration=Z+1.0)
     timeHelper.sleep(Z+2.5)
 
+    # cf.setParam("usd/logging", 1) 
     print("Switching controller")
     cf.setParam("stabilizer/controller", 5) 
     timeHelper.sleep(1.5)
@@ -57,6 +58,7 @@ if __name__ == "__main__":
     cf.notifySetpointsStop()
 
     cf.setParam("stabilizer/controller", 1) 
+    # cf.setParam("usd/logging", 0) 
 
     cf.land(targetHeight=0.03, duration=Z+1.0)
     timeHelper.sleep(Z+2.0)

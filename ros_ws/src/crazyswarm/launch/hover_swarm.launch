@@ -8,10 +8,10 @@
   <node pkg="crazyswarm" type="crazyswarm_server" name="crazyswarm_server" output="screen" >
     <rosparam>
       # Logging configuration (Use enable_logging to actually enable logging)
-      <!-- genericLogTopics: ["log1", "log2"]
-      genericLogTopicFrequencies: [10, 10]
-      genericLogTopic_log1_Variables: ["ctrlMPC.u0"]
-      genericLogTopic_log2_Variables: ["ctrlMPC.u1"] -->
+      genericLogTopics: ["log1"]
+      genericLogTopicFrequencies: [10]
+      genericLogTopic_log1_Variables: ["stabilizer.intToOut"]
+      <!-- genericLogTopic_log1_Variables: ["motor.m1", "motor.m2", "motor.m3", "motor.m4"] -->
       # firmware parameters for all drones (use crazyflieTypes.yaml to set per type, or
       # allCrazyflies.yaml to set per drone)
       firmwareParams:
@@ -42,12 +42,12 @@
       write_csvs: False
       force_no_cache: False
       enable_parameters: True
-      enable_logging: False
-      enable_logging_pose: True
+      enable_logging: True
+      enable_logging_pose: False
     </rosparam>
   </node>
 
-  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server">
       <param name="target_frame_name" type="string" value="world" />
       <param name="source_frame_name" type="string" value="cf1" />   # change to cf2 if needed
       <param name="trajectory_update_rate" type="double" value="100" />

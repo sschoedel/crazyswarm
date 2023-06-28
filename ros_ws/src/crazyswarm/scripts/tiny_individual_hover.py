@@ -13,7 +13,7 @@ def main():
 
     cf.setParam("stabilizer/controller", 1)
     print(f"crazyflie id: {cf.id}")
-    cf.takeoff(0.5, 2.0)
+    cf.takeoff(1, 2.0)
     timeHelper.sleep(2.0)
 
     # print("Select controller to switch to: 1: PID, 2: mellinger, 3: INDI, 4: Brescianini, 5: TinyMPC")
@@ -22,8 +22,8 @@ def main():
     # swarm.input.waitUntilButtonPressed()
     
     print("Switching controller")
-    cf.setParam("stabilizer/controller", 5) # 1: PID, 4: Brescianini, 5: TinyMPC
-    timeHelper.sleep(10.0)
+    # cf.setParam("stabilizer/controller", 5) # 1: PID, 4: Brescianini, 5: TinyMPC
+    timeHelper.sleep(5.0)
 
     # print("press any button to land")
     # swarm.input.waitUntilButtonPressed()

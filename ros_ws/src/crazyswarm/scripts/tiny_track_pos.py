@@ -5,9 +5,8 @@ from __future__ import print_function
 from pycrazyswarm import *
 
 frequency = 500     # control frequency
-uHover = 0.67       # hovering offset
-trajLength = 315 #780    # for delay time 
-trajIter = 2        # number of laps
+trajLength = 1205   # for delay time 
+trajIter = 1        # number of laps
 trajHold = 1        # 1 is most agressive
 
 def main():
@@ -34,7 +33,7 @@ def main():
     # cf.setParam("ctrlMPC/trajIter", trajIter)
     # cf.setParam("ctrlMPC/trajLength", trajLength)
     # cf.setParam("ctrlMPC/uHover", uHover)
-    timeHelper.sleep(trajIter*trajLength*trajHold/500)
+    timeHelper.sleep(trajIter*trajLength*trajHold/100)
 
     # print("press any button to land")
     # swarm.input.waitUntilButtonPressed()
