@@ -20,7 +20,7 @@ if __name__ == "__main__":
     traj1 = uav_trajectory.Trajectory()
     traj1.loadcsv("figure8.csv")
 
-    Z = 1.0
+    Z = 0.6
     TRIALS = 1
     TIMESCALE = 1.0
     for i in range(TRIALS):
