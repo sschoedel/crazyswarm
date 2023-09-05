@@ -11,19 +11,19 @@ def main():
     swarm = Crazyswarm()
     timeHelper = swarm.timeHelper
     allcfs = swarm.allcfs
-    cf = allcfs.crazyflies[1]
-    cf1_obstacle = allcfs.crazyflies[0]
+    rat = allcfs.crazyflies[1]  # avoid the cat
+    cat = allcfs.crazyflies[0]  # chase the rat
 
     timeHelper.sleep(0.5)
 
-    cf.setParam("stabilizer/controller", 1)
-    cf1_obstacle.setParam("stabilizer/controller", 1)
-    print(f"crazyflie id: {cf.id}")
-    cf.takeoff(1.0, 2.0)
-    cf1_obstacle.takeoff(1.0, 2.0)
+    rat.setParam("stabilizer/controller", 1)
+    cat.setParam("stabilizer/controller", 1)
+    print(f"crazyflie id: {rat.id}")
+    rat.takeoff(1.0, 2.0)
+    cat.takeoff(1.0, 2.0)
     timeHelper.sleep(2.0)
-    cf.goTo([0, 0, 1], 0, 3.0)
-    cf1_obstacle.goTo([0, -1, .75], 0, 3.0)
+    rat.goTo([0, 0, 1], 0, 3.0)
+    cat.goTo([0, -1, .75], 0, 3.0)
     timeHelper.sleep(1.5)
 
     print("press any button to run MPC")
@@ -38,8 +38,8 @@ def main():
 
     print("Switching to TinyMPC")
 
-    cf.setParam("stabilizer/controller", 5) # 1: PID, 4: Brescianini, 5: TinyMPC
-    cf.goTo([0, 0, 0], 0, 0.001) # Move obstacle out of the way
+    rat.setParam("stabilizer/controller", 5) # 1: PID, 4: Brescianini, 5: TinyMPC
+    rat.goTo([0, 0, 0], 0, 0.001) # Move obstacle out of the way
 
     print("press any button to land")
 
@@ -49,25 +49,25 @@ def main():
             # 1. get new obstacle transform from mocap
             # 2. convert obstacle transform to xyz coords
             # 3. send transform as a setpoint with cf.goTo
-            position = cf1_obstacle.position()
-            cf.goTo([position[0], position[1], position[2]], 0, 0.001)
-            cf_pose = cf.position()
-            goal_pose = (cf_pose - position)*.3 + position
-            cf1_obstacle.goTo([goal_pose[0], goal_pose[1], goal_pose[2]-.1], 0, 0.001)
+            cat_pos = cat.position()
+            rat.goTo([cat_pos[0], cat_pos[1], cat_pos[2]], 0, 0.001)
+            rat_pos = rat.position()
+            cat_goal = (rat_pos - cat_pos)*.3 + cat_pos
+            cat.goTo([cat_goal[0], cat_goal[1], cat_goal[2]-.1], 0, 0.001)
         # Wait until the key is released.
         while keyPoller.poll() is not None:
             timeHelper.sleep(0.01)
     
-    cf.goTo([0, 0, 1], 0, 3.0)
+    rat.goTo([0, 0, 1], 0, 3.0)
     timeHelper.sleep(2.0)
-    cf1_obstacle.goTo([0, -1, 1], 0, 3.0)
+    cat.goTo([0, -1, 1], 0, 3.0)
     timeHelper.sleep(2.0)
 
     print("Switching to controller 1")
-    cf.setParam("stabilizer/controller", 1)
-    cf.land(0.02, 2.5)
+    rat.setParam("stabilizer/controller", 1)
+    rat.land(0.02, 2.5)
     timeHelper.sleep(2.5)
-    cf1_obstacle.land(0.02, 2.5)
+    cat.land(0.02, 2.5)
     timeHelper.sleep(2.5)
 
     # cf.cmdStop()
