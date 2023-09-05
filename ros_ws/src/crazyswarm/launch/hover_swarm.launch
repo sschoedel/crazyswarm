@@ -10,7 +10,8 @@
       # Logging configuration (Use enable_logging to actually enable logging)
       genericLogTopics: ["log1"]
       genericLogTopicFrequencies: [10]
-      genericLogTopic_log1_Variables: ["stabilizer.intToOut"]
+      <!-- genericLogTopic_log1_Variables: ["stabilizer.intToOut"] -->
+      <!-- genericLogTopic_log1_Variables: ["ctrlMPC.zu0", "ctrlMPC.zu1"] -->
       <!-- genericLogTopic_log1_Variables: ["motor.m1", "motor.m2", "motor.m3", "motor.m4"] -->
       # firmware parameters for all drones (use crazyflieTypes.yaml to set per type, or
       # allCrazyflies.yaml to set per drone)

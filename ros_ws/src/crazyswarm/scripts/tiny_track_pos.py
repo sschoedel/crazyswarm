@@ -4,8 +4,8 @@ from __future__ import print_function
 
 from pycrazyswarm import *
 
-frequency = 500     # control frequency
-trajLength = 1205   # for delay time 
+frequency = 100     # control frequency
+trajLength = 1405   # for delay time 
 trajIter = 1        # number of laps
 trajHold = 1        # 1 is most agressive
 
@@ -19,7 +19,7 @@ def main():
     cf.setParam("stabilizer/controller", 1)
     timeHelper.sleep(1.0)
 
-    cf.takeoff(1.0, 2.0)  
+    cf.takeoff(0.6, 2.0)  
     timeHelper.sleep(2.1)
 
     # print("Select controller to switch to: 1: PID, 2: mellinger, 3: INDI, 4: Brescianini, 5: TinyMPC")
@@ -33,7 +33,7 @@ def main():
     # cf.setParam("ctrlMPC/trajIter", trajIter)
     # cf.setParam("ctrlMPC/trajLength", trajLength)
     # cf.setParam("ctrlMPC/uHover", uHover)
-    timeHelper.sleep(trajIter*trajLength*trajHold/100)
+    timeHelper.sleep(trajIter*trajLength*trajHold/frequency)
 
     # print("press any button to land")
     # swarm.input.waitUntilButtonPressed()
