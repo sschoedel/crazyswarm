@@ -49,7 +49,7 @@ def main():
         while keyPoller.poll() is not None:
             timeHelper.sleep(0.01)
     
-    cf.goTo([0.0, 0.0, 1], 0, 2.0)
+    cf.goTo([0, 0, 1], 0, 3.0)
     timeHelper.sleep(2.0)
 
     print("Switching to controller 1")
