@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/khai/ros/crazyswarm1/workspace/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/khai/ros/crazyswarm1/workspace/src/crazyswarm/ros_ws/src/externalDependencies/libobjecttracker/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

@@ -4,7 +4,7 @@ import numpy as np
 from pycrazyswarm import *
 
 
-Z = 0.5
+Z = 0.6
 sleepRate = 30
 
 # North first
@@ -36,15 +36,15 @@ if __name__ == "__main__":
     timeHelper.sleep(2 + Z)
 
     print("Switching controller")
-    cf.setParam("stabilizer/controller", 5) 
+    cf.setParam("stabilizer/controller", 1) 
     timeHelper.sleep(0.5)
 
     goCircle(timeHelper, cf, totalTime=3, radius=1, kPosition=1)
     cf.land(targetHeight=0.06, duration=2.5)
     timeHelper.sleep(3.0)
 
-    cf.setParam("stabilizer/controller", 1)  # return the original
-    timeHelper.sleep(0.5)
+    # cf.setParam("stabilizer/controller", 1)  # return the original
+    # timeHelper.sleep(0.5)
     
-    cf.land(targetHeight=0.05, duration=2.0)
-    timeHelper.sleep(2.0)
+    # cf.land(targetHeight=0.05, duration=2.0)
+    # timeHelper.sleep(2.0)

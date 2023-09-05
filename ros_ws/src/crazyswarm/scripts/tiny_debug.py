@@ -6,12 +6,11 @@ timeHelper = swarm.timeHelper
 allcfs = swarm.allcfs
 cf = swarm.allcfs.crazyflies[0]
 cf.initialPosition = cf.position()
-Z = 0.4
+Z = 0.5
 
 print("Switching controller")
-cf.setParam("stabilizer/controller", 1)  # 1: PID, 5: MPC
-cf.takeoff(Z, 2)
-timeHelper.sleep(2.0)
+cf.setParam("stabilizer/controller", 5)  # 1: PID, 5: MPC
+timeHelper.sleep(0.1)
 
 
 for k in range(50):
@@ -21,7 +20,6 @@ for k in range(50):
 
 cf.land(0.05, 2.0)
 timeHelper.sleep(2.0)
-
 
 # turn-off motors
 cf.cmdStop()

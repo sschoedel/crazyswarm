@@ -8,7 +8,7 @@ from pycrazyswarm import Crazyswarm
 Z = 0.5
 width = 1.5
 TAKEOFF_DURATION = 1.5
-GOTO_DURATION = 1.1
+GOTO_DURATION = 1.2
 WAYPOINTS = np.array([
     (width, 0.0, Z),
     (width, width, Z),
