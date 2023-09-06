@@ -19,8 +19,8 @@ def main():
     print(f"crazyflie id: {rat.id}")
     rat.takeoff(1.0, 2.0)
     timeHelper.sleep(2.0)
-    # rat.goTo([0, 0, 1], 0, 3.0)
-    # timeHelper.sleep(1.5)
+    rat.goTo([0, 0, 1], 0, 3.0)
+    timeHelper.sleep(3.0)
 
     # print("press any button to run MPC")
 
@@ -37,8 +37,8 @@ def main():
     # rat.goTo([0, 0, 0], 0, 0.001) # Move obstacle out of the way
 
     # print("press any button to land")
-    for i in range(30):
-        rat_pos = rat.position() - [0, 0, 0.4]
+    for i in range(50):
+        rat_pos = rat.position() - [0, 0, 0.45]
         rat.cmdPosition(rat_pos, yaw=0)
         timeHelper.sleep(0.1)
 
