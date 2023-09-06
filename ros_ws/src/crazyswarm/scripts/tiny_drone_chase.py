@@ -17,10 +17,13 @@ def main():
     timeHelper.sleep(0.5)
 
     cf.setParam("stabilizer/controller", 1)
+    cf1_obstacle.setParam("stabilizer/controller", 1)
     print(f"crazyflie id: {cf.id}")
     cf.takeoff(1.0, 2.0)
+    cf1_obstacle.takeoff(1.0, 2.0)
     timeHelper.sleep(2.0)
     cf.goTo([0, 0, 1], 0, 3.0)
+    cf1_obstacle.goTo([0, -1, .75], 0, 3.0)
     timeHelper.sleep(1.5)
 
     print("press any button to run MPC")
@@ -48,16 +51,23 @@ def main():
             # 3. send transform as a setpoint with cf.goTo
             position = cf1_obstacle.position()
             cf.goTo([position[0], position[1], position[2]], 0, 0.001)
+            cf_pose = cf.position()
+            goal_pose = (cf_pose - position)*.3 + position
+            cf1_obstacle.goTo([goal_pose[0], goal_pose[1], goal_pose[2]-.1], 0, 0.001)
         # Wait until the key is released.
         while keyPoller.poll() is not None:
             timeHelper.sleep(0.01)
     
     cf.goTo([0, 0, 1], 0, 3.0)
     timeHelper.sleep(2.0)
+    cf1_obstacle.goTo([0, -1, 1], 0, 3.0)
+    timeHelper.sleep(2.0)
 
     print("Switching to controller 1")
     cf.setParam("stabilizer/controller", 1)
     cf.land(0.02, 2.5)
+    timeHelper.sleep(2.5)
+    cf1_obstacle.land(0.02, 2.5)
     timeHelper.sleep(2.5)
 
     # cf.cmdStop()
