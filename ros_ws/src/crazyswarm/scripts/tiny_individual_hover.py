@@ -44,16 +44,25 @@ def main():
             # 1. get new obstacle transform from mocap
             # 2. convert obstacle transform to xyz coords
             # 3. send transform as a setpoint with cf.goTo
+<<<<<<< Updated upstream
             # cf.goTo([1.5, .5, 1.5], 0, 0.001)
+=======
+            position = cf1_obstacle.position()
+            cf.goTo([position[0], position[1], position[2]], 0, 0.01)
+            print("obs_position = ", position)
+            print("cf_position = ", cf.position())
+>>>>>>> Stashed changes
         # Wait until the key is released.
         # while keyPoller.poll() is not None:
             # timeHelper.sleep(0.01)
     
-    cf.goTo([0, 0, 1], 0, 3.0)
-    timeHelper.sleep(2.0)
+    # cf.goTo([0, 0, 1], 0, 3.0)
+    # timeHelper.sleep(2.0)
 
     print("Switching to controller 1")
     cf.setParam("stabilizer/controller", 1)
+    timeHelper.sleep(0.1)
+    cf.cmdPosition([0, 0, 0.5], yaw=0)
     cf.land(0.02, 2.5)
     timeHelper.sleep(2.5)
 

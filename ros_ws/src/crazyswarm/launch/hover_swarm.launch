@@ -51,7 +51,7 @@
 
   <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server">
       <param name="target_frame_name" type="string" value="world" />
-      <param name="source_frame_name" type="string" value="cf2" />   # change to cf2 if needed
+      <param name="source_frame_name" type="string" value="cf1" />   # change to cf2 if needed
       <param name="trajectory_update_rate" type="double" value="100" />
       <param name="trajectory_publish_rate" type="double" value="100" />
   </node>

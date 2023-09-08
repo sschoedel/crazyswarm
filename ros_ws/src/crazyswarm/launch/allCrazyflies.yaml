@@ -7,6 +7,10 @@ crazyflies:
   #   channel: 80 # small mocap markers, 32 grams
   #   initialPosition: [0.0, 0.0, 0.0]
   #   type: default
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     
 # With using tiny_chooser.py changes crazyflies.yaml automatically 
 # initialPosition is set when crazyswarm_server is started
