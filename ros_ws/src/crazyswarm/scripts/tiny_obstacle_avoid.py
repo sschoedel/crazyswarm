@@ -6,7 +6,6 @@ from pycrazyswarm import *
 
 from pycrazyswarm import keyboard
 
-import numpy as np
 import time
 
 
@@ -15,18 +14,15 @@ def main():
     timeHelper = swarm.timeHelper
     allcfs = swarm.allcfs
     cf = allcfs.crazyflies[1]
-    cf1_obstacle = allcfs.crazyflies[0]
+    cf_obstacle = allcfs.crazyflies[0]
 
     timeHelper.sleep(0.5)
 
     cf.setParam("stabilizer/controller", 1)
-    cf1_obstacle.setParam("stabilizer/controller", 1)
     print(f"crazyflie id: {cf.id}")
     cf.takeoff(1.0, 2.0)
-    cf1_obstacle.takeoff(1.0, 2.0)
     timeHelper.sleep(2.0)
     cf.goTo([0, 0, 1], 0, 3.0)
-    cf1_obstacle.goTo([0, -1, 1.5], 0, 3.0)
     timeHelper.sleep(1.5)
 
     print("press any button to run MPC")
@@ -42,10 +38,10 @@ def main():
     print("Switching to TinyMPC")
 
     cf.setParam("stabilizer/controller", 5) # 1: PID, 4: Brescianini, 5: TinyMPC
+    cf.setParam("usd/logging", 1) # Begin logging data
     cf.goTo([0, 0, 0], 0, 0.001) # Move obstacle out of the way
 
     print("press any button to land")
-
 
     velocity = [0, 0, 0]
     prev_position = [0, 0, 0]
@@ -57,13 +53,7 @@ def main():
             # 1. get new obstacle transform from mocap
             # 2. convert obstacle transform to xyz coords
             # 3. send transform as a setpoint with cf.goTo
-            position = cf1_obstacle.position()
-            cf.goTo([position[0], position[1], position[2]], 0, 0.001)
-            cf_pose = cf.position()
-            pose_diff = cf_pose - position
-            goal_position = (pose_diff/np.linalg.norm(pose_diff))*.4 + position
-
-
+            position = cf_obstacle.position()
             diff = time.time() - pos_time
             if max(position - prev_position) > 1e-6 or diff > 0.05:
                 # print(["{0: 0.4f}".format(v_) for v_ in velocity])
@@ -71,23 +61,20 @@ def main():
                 prev_position = position
                 pos_time = time.time()
 
-            cf.cmdFullState(position, velocity, [0, 0, 0], 0, [0, 0, 0])
-
-            cf1_obstacle.goTo([goal_position[0], goal_position[1], goal_position[2]], 0, 0.001)
+            cf.cmdFullState(position, velocity, [0.8, 0, 0], 0, [0, 0, 0])
+            timeHelper.sleep(0.001)
         # Wait until the key is released.
         while keyPoller.poll() is not None:
             timeHelper.sleep(0.01)
     
+    cf.setParam("usd/logging", 0) # Stop logging data
+    timeHelper.sleep(1)
+
     print("Switching to controller 1")
     cf.setParam("stabilizer/controller", 1)
     cf.goTo([0, 0, 1], 0, 3.0)
     timeHelper.sleep(2.0)
-    cf1_obstacle.goTo([0, -1, 1], 0, 3.0)
-    timeHelper.sleep(2.0)
-
     cf.land(0.02, 2.5)
-    timeHelper.sleep(2.5)
-    cf1_obstacle.land(0.02, 2.5)
     timeHelper.sleep(2.5)
 
     # cf.cmdStop()
