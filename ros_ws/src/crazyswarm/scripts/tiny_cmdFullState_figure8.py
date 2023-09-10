@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
     # cf.setParam("usd/logging", 1) 
     print("Switching controller")
-    cf.setParam("stabilizer/controller", 5) 
+    cf.setParam("stabilizer/controller", 1) 
     timeHelper.sleep(1.5)
 
     executeTrajectory(timeHelper, cf, "figure8.csv", rate, offset=np.array([0, 0, Z]))

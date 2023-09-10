@@ -13,8 +13,8 @@ def main():
     swarm = Crazyswarm()
     timeHelper = swarm.timeHelper
     allcfs = swarm.allcfs
-    cf = allcfs.crazyflies[1]
-    cf_obstacle = allcfs.crazyflies[0]
+    cf = allcfs.crazyflies[0]
+    cf_obstacle = allcfs.crazyflies[1]
 
     timeHelper.sleep(0.5)
 
