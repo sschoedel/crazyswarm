@@ -8,11 +8,13 @@
   <node pkg="crazyswarm" type="crazyswarm_server" name="crazyswarm_server" output="screen" >
     <rosparam>
       # Logging configuration (Use enable_logging to actually enable logging)
-      genericLogTopics: ["log1"]
-      genericLogTopicFrequencies: [10]
+      genericLogTopics: ["log1", "log2"]
+      genericLogTopicFrequencies: [50, 50]
       <!-- genericLogTopic_log1_Variables: ["stabilizer.intToOut"] -->
       <!-- genericLogTopic_log1_Variables: ["ctrlMPC.zu0", "ctrlMPC.zu1"] -->
-      <!-- genericLogTopic_log1_Variables: ["motor.m1", "motor.m2", "motor.m3", "motor.m4"] -->
+      <!-- genericLogTopic_log1_Variables: ["motor.m5", "motor.m2", "motor.m3", "motor.m4"] -->
+      genericLogTopic_log1_Variables: ["motorUncapped.m1", "motorUncapped.m2", "motorUncapped.m3", "motorUncapped.m4"]
+      genericLogTopic_log2_Variables: ["ctrlMPC.mpcTime", "ctrlMPC.iters", "ctrlMPC.primal_residual", "ctrlMPC.dual_residual"]
       # firmware parameters for all drones (use crazyflieTypes.yaml to set per type, or
       # allCrazyflies.yaml to set per drone)
       firmwareParams:
@@ -51,14 +53,14 @@
 
   <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server">
       <param name="target_frame_name" type="string" value="world" />
-      <param name="source_frame_name" type="string" value="cf1" />   # change to cf2 if needed
+      <param name="source_frame_name" type="string" value="cf3" />   # change to cf2 if needed
       <param name="trajectory_update_rate" type="double" value="100" />
       <param name="trajectory_publish_rate" type="double" value="100" />
   </node>
 
-  <node name="joy" pkg="joy" type="joy_node" output="screen">
+  <!-- <node name="joy" pkg="joy" type="joy_node" output="screen">
     <param name="dev" value="$(arg joy_dev)" />
-  </node>
+  </node> -->
 
   <!-- <node pkg="crazyswarm" type="crazyswarm_teleop" name="crazyswarm_teleop" output="screen">
     <param name="csv_file" value="$(find crazyswarm)/launch/figure8_smooth.csv" />

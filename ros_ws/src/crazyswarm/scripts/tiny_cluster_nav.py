@@ -78,7 +78,7 @@ def main():
     rat.goTo([0, 0, 0], 0, 0.001)
 
     # print("press any button to land")
-    for i in range(800):
+    for i in range(1000):
         rat_pos = rat.position()
         obs_pos = check_closest_obs(rat_pos, obs_pos_all)
         print("rat at:", rat_pos)

@@ -21,7 +21,7 @@ if __name__ == '__main__':
 		"--stm32Fw",
 		type=str,
 		# default= "/home/tinympc/tinympc-crazyflie-firmware/cf2.bin",
-		default= "~/SSD/Code/crazyflie-tinympc-firmware/cf2.bin",
+		default= "~/SSD/Code/tinympc-crazyflie-firmware/cf2.bin",
 		# default=os.path.join(os.path.dirname(os.path.realpath(__file__)), "../../../../../crazyflie-firmware-new/tinympc-crazyflie-firmware/cf2.bin"),
 		help="Path to cf2.bin")
 	parser.add_argument(

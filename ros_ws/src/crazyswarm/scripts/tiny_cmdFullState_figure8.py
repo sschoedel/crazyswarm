@@ -37,7 +37,7 @@ if __name__ == "__main__":
     timeHelper = swarm.timeHelper
     cf = swarm.allcfs.crazyflies[0]
     cf.initialPosition = cf.position()
-    rate = 30.0
+    rate = 1.0
     Z = 1.0
 
     print("Switching controller")
@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
     # cf.setParam("usd/logging", 1) 
     print("Switching controller")
-    cf.setParam("stabilizer/controller", 5) 
+    # cf.setParam("stabilizer/controller", 5) 
     timeHelper.sleep(1.5)
 
     executeTrajectory(timeHelper, cf, "figure8.csv", rate, offset=np.array([0, 0, Z]))
