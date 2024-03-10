@@ -7,7 +7,7 @@ from pycrazyswarm import *
 frequency = 500     # control frequency
 trajLength = 1405   # for delay time 
 trajIter = 1        # number of laps
-trajHold = 2        # 1 is most agressive
+trajHold = 3        # 1 is most agressive
 
 def main():
     swarm = Crazyswarm()
@@ -17,16 +17,16 @@ def main():
     print(f"crazyflie id: {cf.id}")
 
     cf.setParam("stabilizer/controller", 1) 
-    cf.takeoff(1.0, 2.0)  
+    cf.takeoff(0.8, 2.0)  
     timeHelper.sleep(2.1)
-    cf.goTo([0, 0, 1.0], 0, 2)
+    cf.goTo([0, 0, 0.8], 0, 2)
     timeHelper.sleep(2.0)
 
     # print("Select controller to switch to: 1: PID, 2: mellinger, 3: INDI, 4: Brescianini, 5: TinyMPC")
     
     print("START: Switching controller task")
-    cf.setParam("usd/logging", 1)
-    # cf.setParam("stabilizer/en_vel_ref", 1) 
+    # cf.setParam("usd/logging", 1)
+    # cf.setParam("stabilizer/en_vel_ref", 0) 
     # cf.setParam("stabilizer/en_traj", 1)
 
     cf.setParam("stabilizer/controller", 5) # 1: PID, 4: Brescianini, 5: TinyMPC
@@ -37,15 +37,17 @@ def main():
     # cf.setParam("ctrlMPC/uHover", uHover)
     
     timeHelper.sleep(trajIter*trajLength*trajHold/frequency)
-    cf.setParam("usd/logging", 0)
+    # timeHelper.sleep(1.0)    
+    # cf.setParam("usd/logging", 0)
     timeHelper.sleep(1.0)    
     
     # cf.setParam("stabilizer/en_traj", 0)
+    cf.goTo([0, 0, 0.8], 0, 2)
     print("END: Switching to controller 1")
     cf.setParam("stabilizer/controller", 1)   
 
     timeHelper.sleep(2.0)
-    cf.goTo([0, 0, 0.1], 0, 2)
+    cf.goTo([0, 0, 0.2], 0, 2)
     timeHelper.sleep(2.0)
     cf.land(0.02, 2.0)
     timeHelper.sleep(2.0)

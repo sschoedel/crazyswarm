@@ -22,7 +22,7 @@
           enHighLevel: 1
         stabilizer:
           estimator: 2 # 1: complementary, 2: kalman
-          controller: 2 # 1: PID, 2: mellinger
+          controller: 1 # 1: PID, 2: mellinger
         <!-- ring:
           effect: 16 # 6: double spinner, 7: solid color, 16: packetRate
           solidBlue: 255 # if set to solid color
@@ -35,28 +35,28 @@
         kalman:
           resetEstimation: 1
       # tracking
-      motion_capture_type: "optitrack" #"vicon" # one of none,vicon,optitrack,optitrack_closed_source,qualisys,vrpn
+      motion_capture_type: none #"vicon" # one of none,vicon,optitrack,optitrack_closed_source,qualisys,vrpn
       <!-- motion_capture_type: "none" #"vicon" # one of none,vicon,optitrack,optitrack_closed_source,qualisys,vrpn -->
       object_tracking_type: "motionCapture" # "libobjecttracker" # one of motionCapture,libobjecttracker
       send_position_only: False # set to False to send position+orientation; set to True to send position only
-      motion_capture_host_name: "192.168.123.199" # "vicon"
+      <!-- motion_capture_host_name: "192.168.123.199" # "vicon" -->
       # motion_capture_interface_ip: "" # optional for optitrack with multiple interfaces
       save_point_clouds: "/dev/null" # set to a valid path to log mocap point cloud binary file.
       print_latency: False
       write_csvs: False
       force_no_cache: False
       enable_parameters: True
-      enable_logging: True
-      enable_logging_pose: False
+      enable_logging: False
+      enable_logging_pose: True
     </rosparam>
   </node>
 
-  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server">
+  <!-- <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server">
       <param name="target_frame_name" type="string" value="world" />
       <param name="source_frame_name" type="string" value="cf3" />   # change to cf2 if needed
       <param name="trajectory_update_rate" type="double" value="100" />
       <param name="trajectory_publish_rate" type="double" value="100" />
-  </node>
+  </node> -->
 
   <!-- <node name="joy" pkg="joy" type="joy_node" output="screen">
     <param name="dev" value="$(arg joy_dev)" />

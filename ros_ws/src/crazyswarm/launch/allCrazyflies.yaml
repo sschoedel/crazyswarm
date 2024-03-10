@@ -1,6 +1,6 @@
 crazyflies:
   - id: 1
-    channel: 80 # big mocap markers, 35 grams
+    channel: 80 # with the Flow deck
     initialPosition: [0.0, 0.0, 0.0]
     type: default
   # - id: 2

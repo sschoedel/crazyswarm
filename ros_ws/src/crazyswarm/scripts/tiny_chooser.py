@@ -27,7 +27,8 @@ if __name__ == '__main__':
 	parser.add_argument(
 		"--nrf51Fw",
 		type=str,
-		default=os.path.join(os.path.dirname(os.path.realpath(__file__)), "../../../../crazyflie2-nrf-firmware/cf2_nrf.bin"),
+		# default=os.path.join(os.path.dirname(os.path.realpath(__file__)), "../../../../crazyflie2-nrf-firmware/cf2_nrf.bin"),
+		default=os.path.join(os.path.dirname(os.path.realpath(__file__)), "~/SSD/Code/crazyflie2-nrf-firmware/cf2_nrf.bin"),
 		help="Path to cf2_nrf.bin")
 	args = parser.parse_args()
 
