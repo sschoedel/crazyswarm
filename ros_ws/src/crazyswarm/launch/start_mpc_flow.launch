@@ -8,8 +8,8 @@
   <node pkg="crazyswarm" type="crazyswarm_server" name="crazyswarm_server" output="screen" >
     <rosparam>
       # Logging configuration (Use enable_logging to actually enable logging)
-      genericLogTopics: ["log1", "log2"]
-      genericLogTopicFrequencies: [50, 50]
+      <!-- genericLogTopics: ["log1", "log2"] -->
+      <!-- genericLogTopicFrequencies: [50, 50] -->
       <!-- genericLogTopic_log1_Variables: ["stabilizer.intToOut"] -->
       <!-- genericLogTopic_log1_Variables: ["ctrlMPC.zu0", "ctrlMPC.zu1"] -->
       <!-- genericLogTopic_log1_Variables: ["motor.m5", "motor.m2", "motor.m3", "motor.m4"] -->
@@ -46,17 +46,17 @@
       write_csvs: False
       force_no_cache: False
       enable_parameters: True
-      enable_logging: False
+      enable_logging: True
       enable_logging_pose: True
     </rosparam>
   </node>
 
-  <!-- <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server">
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server">
       <param name="target_frame_name" type="string" value="world" />
-      <param name="source_frame_name" type="string" value="cf3" />   # change to cf2 if needed
+      <param name="source_frame_name" type="string" value="cf1" />   # change to cf2 if needed
       <param name="trajectory_update_rate" type="double" value="100" />
       <param name="trajectory_publish_rate" type="double" value="100" />
-  </node> -->
+  </node>
 
   <!-- <node name="joy" pkg="joy" type="joy_node" output="screen">
     <param name="dev" value="$(arg joy_dev)" />

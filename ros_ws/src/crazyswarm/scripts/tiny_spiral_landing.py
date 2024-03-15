@@ -17,10 +17,10 @@ def main():
 
     cf.setParam("stabilizer/controller", 1)
     print(f"crazyflie id: {cf.id}")
-    cf.takeoff(0.5, 2.0)
+    cf.takeoff(1.0, 2.0)
     timeHelper.sleep(2.0)
-    # cf.goTo([0, 0, 1], 0, 3.0)
-    timeHelper.sleep(1.0)
+    cf.goTo([0, 1.0, 1.0], 0, 2.0)  # go to trajectory start position
+    timeHelper.sleep(2.0)
 
     print("press any button to run MPC")
 
@@ -49,15 +49,15 @@ def main():
             timeHelper.sleep(0.01)
     
     # cf.goTo([0, 0, 1], 0, 3.0)
-    # timeHelper.sleep(5)
+    # timeHelper.sleep(10)
 
     print("Switching to controller 1")
     cf.setParam("stabilizer/controller", 1)
-    timeHelper.sleep(0.1)
-    # cf.cmdPosition([4.0, 0, 0.5], yaw=0)
-    timeHelper.sleep(1.0)
-    cf.land(0.02, 2.5)
-    timeHelper.sleep(2.5)
+    # timeHelper.sleep(0.1)
+    # cf.goTo([0, 0.0, 0.0], 0, 1.0)  # go to trajectory start position
+    # timeHelper.sleep(1.0)
+    cf.land(0.02, 1)
+    timeHelper.sleep(1)
 
     # cf.cmdStop()
 
