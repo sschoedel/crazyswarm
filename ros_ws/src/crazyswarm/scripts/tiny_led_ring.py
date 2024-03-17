@@ -17,12 +17,13 @@ def main():
 
     off = 0b10000000
     cf.setParam('led/bitmask', off)
-    cf.setParam('ring/effect', 6)
-    cf.setParam('ring/solidRed', 1)
+    cf.setParam('ring/effect', 4)
+    cf.setParam('ring/headlightEnable', 0)
+    cf.setParam('ring/solidRed', 0)
     cf.setParam('ring/solidGreen', 0)
-    cf.setParam('ring/solidBlue', 0)
+    cf.setParam('ring/solidBlue', 20)    
 
-    timeHelper.sleep(2.0)
+    timeHelper.sleep(5.0)
 
     cf.setParam('ring/effect', 0)    
 
