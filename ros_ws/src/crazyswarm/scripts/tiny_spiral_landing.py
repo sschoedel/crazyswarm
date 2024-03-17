@@ -14,12 +14,18 @@ def main():
     cf = allcfs.crazyflies[0]
 
     timeHelper.sleep(0.5)
+    green = 0b10001010
+    blue  = 0b10100001
+    red   = 0b10010100
+    off   = 0b10000000
+    cf.setParam('led/bitmask', red)
+    timeHelper.sleep(0.15)
 
     cf.setParam("stabilizer/controller", 1)
     print(f"crazyflie id: {cf.id}")
-    cf.takeoff(1.0, 2.0)
+    cf.takeoff(1.4, 2.0)
     timeHelper.sleep(2.0)
-    cf.goTo([0, 1.0, 1.0], 0, 2.0)  # go to trajectory start position
+    cf.goTo([0, 1.0, 1.4], 0, 2.0)  # go to trajectory start position
     timeHelper.sleep(2.0)
 
     print("press any button to run MPC")
@@ -51,9 +57,11 @@ def main():
     # cf.goTo([0, 0, 1], 0, 3.0)
     # timeHelper.sleep(10)
 
+    cf.setParam('led/bitmask', off)
+    timeHelper.sleep(0.15)
     print("Switching to controller 1")
     cf.setParam("stabilizer/controller", 1)
-    # timeHelper.sleep(0.1)
+    timeHelper.sleep(0.15)
     # cf.goTo([0, 0.0, 0.0], 0, 1.0)  # go to trajectory start position
     # timeHelper.sleep(1.0)
     cf.land(0.02, 1)
